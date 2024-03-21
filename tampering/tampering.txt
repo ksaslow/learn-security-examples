@@ -1,0 +1,13 @@
+Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+Attackers can change or tamper with the application's inputs to cause unintended behavior. Because anything entered
+into the form by the user is actually read and used by the server, a malicious attacker could actually type code into 
+the form (or insert a hyperlink directly, for example) and the server WILL execute it. 
+
+The secure version of the code, we take the input that the person entered into the form and we make sure that
+it is sanitized. This stops the malicious user from entering code into the form and having it run 
+on the server. Sanitizing is essentially removing anything that could be interpreted as a script. 
+
+Tampering violates the I in CIA. Integrity: guaranteeing that data remains unchanged and uncorrupted during storage,
+transmission, or processing. Tampering clearly corrupts data, by inserting unwanted and unintended input, forcing the server
+to act in an unintended way.

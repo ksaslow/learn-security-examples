@@ -1,1 +1,17 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The vulnerability is that when a session is started, the session ID is created and set in the cookie
+of the browswer. As long as a client has the session ID, the session can be spoofed. 
+
+If the session ID is stolen, anyone can access the session data and mascarade as an Admin. And because cookies are set and 
+sent to any server, the session ID that was set in the cookies is also sent in the request header (in the insecure
+version). 
+
+The secure version of the code configures the middleware to set the session ID in the 
+cookie of the browser to httpOnly = true! This prevents document.cookie from being optional. In the secure version, 
+sameSite is also set to true, which prevents the session from being sent to another site. With these two changes, when there
+is a request sent, there is some authority/certainty that the request is from a valid client. 
+
+I believe that spoofing attacks violate the C in CIA. Confidentiality: ensuring that sensitive information is accessible
+only to authorized individuals or entities. Spoofing attacks are when an attacker successfully identifies as another user to gain 
+unauthorized access (to sensitive, confidential information).

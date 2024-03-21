@@ -63,3 +63,6 @@ app.listen(8000);
 function escapeHTML(input) {
   return input.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
+// here we are taking the input the person entered into the form and making sure it is SANITIZED!
+// This stops the malicious user from entering code into the form and having it run on the server!!!
+// removing ANYTHING that could be interpreted as a script. 

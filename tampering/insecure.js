@@ -33,6 +33,9 @@ app.get("/", (req, res) => {
 
   if (req.session.user) name = req.session.user
 
+  // anything entered into the form by the user is actualy read and used by the server!
+  // so a malicious attacker could type code into the form (or a hyperlink for example) into the 
+  // form and the server would execute it!!!
   res.send(`
   <h1>Welcome, ${name}</h1>
   <form action="/register" method="POST">

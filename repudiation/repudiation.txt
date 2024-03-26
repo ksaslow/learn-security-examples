@@ -11,3 +11,6 @@ Then we can check this log regularly for suspicious behavior!
 we do this with middleware. 
 
 we also have middleware that says that if there is an issue with the log, the middleware function somehow still logs whether the request was successful or not.
+
+solutions:
+- audit trail! 

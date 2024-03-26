@@ -27,8 +27,11 @@ app.get('/userinfo', async (req, res) => {
     return res.status(400).send('Invalid username format');
   }
 
-  // Sanitize username input: Prevent NoSQL injection
+  // Sanitize username input: Prevent NoSQL injection --> THIS IS THE FIX to the insecure.js code. If anything is not a word or a space, it will be removed.
   const sanitizedUsername = username.replace(/[^\w\s]/gi, ''); // Remove non-alphanumeric characters
+  // ensuring that only usernames without alphanumerical characters are allowed!
+  // this also has to be defined in the requirements! 
+  // "This is secure with regard to ...." a specific threat. In this case, this is secure w.r.t. information disclosure!
 
   // Perform database query using sanitized username
   try {

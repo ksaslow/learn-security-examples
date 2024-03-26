@@ -13,4 +13,4 @@ the secure.js version prevents the vulnerability, because it allows a graceful w
 what other security mechanisms: (in the context of DOS attacks)
 - put some sort of limit so that a user can only send so many requests within a timestamp
     - we could do this with some kind of middleware, which is called before the route only allow so many requests every 30 seconds or so.
-- 
+

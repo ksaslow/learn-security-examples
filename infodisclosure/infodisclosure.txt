@@ -2,9 +2,22 @@ Briefly explain the vulnerability and why the secure version prevents the vulner
 Which CIA property does tampering violate?
 What additional security mechanisms can you incorporate?
 
-// NOTE: the METHOD = tampering, the RESULT = information disclosure!
-// which security meausures can we incorporate: 
-// - we chould hash the stored passwords by using a hash algorithm (rather than storing plain text passwords)!
-// - or we could ensure that data in transit is also encryptyed (like using HTTPS)!
-// - we could make the cookies inaccessible so that the session ID or the cookies by using 2-factor authentication (example JWT tokens)!
+The vulnerability is that the code directly uses user-provided values in the query, and the user input is 
+not sanitized. The attacker can hijack the parameter here and get the any information they want here.
+Because we are using the variable "username" AS IS, the attacker can send it an executable query condition, rather than a string!
+
+NOTE: the METHOD = tampering, the RESULT = information disclosure!
+
+The secure version prevents the vulnerability by first sanitizing the input and making sure that any input resembling code or scripts
+is removed. Any non-word or space is first removed from the string. 
+
+The CIA property that information disclosuer violates is C: confidentiality, because an information disclosure attack allows unauthorized
+individuals to access sensitice or confidential information, potentially leading to privacy breaches, data theft, 
+or unauthorized access to systems or networks.
+
+Additional security measures we can incorporate:
+- we chould hash the stored passwords by using a hash algorithm (rather than storing plain text passwords)!
+- or we could ensure that data in transit is also encryptyed (like using HTTPS)!
+- we could make the cookies inaccessible so that the session ID or the cookies by using 2-factor authentication (example JWT tokens)!
     this ensures that the session is sent not in the cookies, but in the client's memory/state (this might be more directed towards spoofing though! )
+

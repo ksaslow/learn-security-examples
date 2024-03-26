@@ -1,9 +1,8 @@
 - Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
 - What additional security mechanisms can you incorporate to prevent such attacks?
 
-in the context of either no or weak authentication, can we still have repudiation? 
-
-vulnerability = there is no log of interactions with our system (requests). This makes it hard to have repudiation
+The vulnerability is that there is no log of interactions with our system (requests). This makes it hard to have repudiation.
+In the context of either no or weak authentication, can we still have repudiation? 
 
 secure.js has some form of LOGGING for its public-facing endpoints, which means that we are collecting information for any sort of request!
 note: when we run secure.js, the file server.log is created! By maintaining the server.log, we are maintaining a RECORD of all servers interacting with our system!
@@ -12,5 +11,5 @@ we do this with middleware.
 
 we also have middleware that says that if there is an issue with the log, the middleware function somehow still logs whether the request was successful or not.
 
-solutions:
-- audit trail! 
+More potential solutions:
+- audit trail!

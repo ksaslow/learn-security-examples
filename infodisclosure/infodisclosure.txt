@@ -1,3 +1,10 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
 Which CIA property does tampering violate?
 What additional security mechanisms can you incorporate?
+
+// NOTE: the METHOD = tampering, the RESULT = information disclosure!
+// which security meausures can we incorporate: 
+// - we chould hash the stored passwords by using a hash algorithm (rather than storing plain text passwords)!
+// - or we could ensure that data in transit is also encryptyed (like using HTTPS)!
+// - we could make the cookies inaccessible so that the session ID or the cookies by using 2-factor authentication (example JWT tokens)!
+    this ensures that the session is sent not in the cookies, but in the client's memory/state (this might be more directed towards spoofing though! )

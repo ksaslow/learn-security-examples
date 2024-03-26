@@ -1,2 +1,16 @@
 - Briefly explain the vulnerability and why the secure version prevents the vulnerability.
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+vulnerability: there is NO TRY/CATCH!
+around .findOne() there is no graceful way to exit
+
+we do a findOne on the ID, NOT the username!! (note: MongoDB does not allow a findOne on an id, if you try this with regular expression, it will actually crash!)
+http://localhost:3000/userinfo?id[$ne] 
+that will actually cause the whole system to crash!!!
+
+the secure.js version prevents the vulnerability, because it allows a graceful way to exit the request WITHOUT crashing the system!!! 
+
+what other security mechanisms: (in the context of DOS attacks)
+- put some sort of limit so that a user can only send so many requests within a timestamp
+    - we could do this with some kind of middleware, which is called before the route only allow so many requests every 30 seconds or so.
+- 

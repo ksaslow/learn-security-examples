@@ -1,0 +1,16 @@
+vulnerability = you can freely upgrade or downgrade a user's status! There is no authenticating the user in the code.
+
+any user who is not an admin is capable of downgrading the status of an admin! 
+The problem is that we check the user's role, but an attacker could simulate that role to be anything. The attacker could take a brute force 
+approach to keep checking until they validate the id. 
+
+solutions: 
+- we need some sort of authentication
+    - through sessions, 
+    - having login/registration page,
+    - etc. 
+- 2 factor authentication (vulnerability could be that you arent doing ENOUGH authentication!)
+
+secure.js:
+we check that the userid is part of a session or not, and there is middleware to create a (secret?) session ID that is assigned 
+

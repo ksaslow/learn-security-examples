@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Session middleware
+// here we assign the session used in the cookies! We need to make sure that the session cannot be accessed programmatically!
 app.use(session({
   secret: 'your_secret_key',
   resave: false,
@@ -31,7 +32,7 @@ app.post('/update-role', (req, res) => {
 
   // Check if the user is logged in (authenticated)
   if (!req.session.userId) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(401).json({ error: 'Unauthorized' }); // here we check that the session is as expected (see above middleware!)
   }
 
   // Simulated authorization based on session data

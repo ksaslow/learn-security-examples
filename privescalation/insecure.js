@@ -33,7 +33,7 @@ app.post('/update-role', (req, res) => {
   }
 
   // Update user role (vulnerable to privilege escalation)
-  user.role = newRole;
+  user.role = newRole; // No validation or sanitization of the newRole variable here! The attacker can set any role they want!
   res.json({ message: 'User role updated successfully' });
 });
 

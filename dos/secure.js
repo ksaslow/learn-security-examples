@@ -22,11 +22,14 @@ const User = mongoose.model('User', userSchema);
 app.get('/userinfo', async (req, res) => {
   const { id } = req.query;
 
+  // note the try/catch here!
+  // there is still a vulnerability here, but it is NOT exploitable because of the native safeguards that MongoDB has in place!
   try {
     const user = await User.findOne({ _id: id }).exec();
     if (user) {
         res.send(`User: ${user}`);
       } else {
+        // this wont work, but at least it wont crash the whole system!
         res.status(401).send('Invalid username or password');
       }
   }
